@@ -12,5 +12,6 @@ const config = {
 //   }
 // };
 
+//new 
 // toggleAddLocation();
 
