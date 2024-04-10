@@ -2,7 +2,7 @@ const config = {
   cUrl: 'https://www.universal-tutorial.com/api/countries/'
   
 }
-
+//test
 // const toggleAddLocation = () => {
 //   const addLocationSection = document.getElementById('addLocationSection');
 //   if (isNewTrip) {
