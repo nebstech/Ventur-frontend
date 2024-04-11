@@ -1,0 +1,252 @@
+[
+  {
+    "country": "US",
+    "state": "Alabama",
+    "cities": ["Montgomery", "Birmingham", "Huntsville", "Mobile", "Tuscaloosa"]
+  },
+  {
+    "country": "US",
+    "state": "Alaska",
+    "cities": ["Juneau", "Anchorage", "Fairbanks", "Sitka", "Ketchikan"]
+  },
+  {
+    "country": "US",
+    "state": "Arizona",
+    "cities": ["Phoenix", "Tucson", "Mesa", "Chandler", "Scottsdale"]
+  },
+  {
+    "country": "US",
+    "state": "Arkansas",
+    "cities": ["Little Rock", "Fayetteville", "Fort Smith", "Springdale", "Jonesboro"]
+  },
+  {
+    "country": "US",
+    "state": "California",
+    "cities": ["Sacramento", "Los Angeles", "San Diego", "San Francisco", "Fresno"]
+  },
+  {
+    "country": "US",
+    "state": "Colorado",
+    "cities": ["Denver", "Colorado Springs", "Aurora", "Fort Collins", "Boulder"]
+  },
+  {
+    "country": "US",
+    "state": "Connecticut",
+    "cities": ["Hartford", "New Haven", "Stamford", "Bridgeport", "Waterbury"]
+  },
+  {
+    "country": "US",
+    "state": "Delaware",
+    "cities": ["Dover", "Wilmington", "Newark", "Middletown", "Smyrna"]
+  },
+  {
+    "country": "US",
+    "state": "Florida",
+    "cities": ["Tallahassee", "Miami", "Orlando", "Tampa", "Jacksonville"]
+  },
+  {
+    "country": "US",
+    "state": "Georgia",
+    "cities": ["Atlanta", "Augusta", "Savannah", "Athens", "Macon"]
+  },
+  {
+    "country": "US",
+    "state": "Hawaii",
+    "cities": ["Honolulu", "Hilo", "Kailua", "Kapolei", "Waipahu"]
+  },
+  {
+    "country": "US",
+    "state": "Idaho",
+    "cities": ["Boise", "Idaho Falls", "Nampa", "Pocatello", "Coeur d'Alene"]
+  },
+  {
+    "country": "US",
+    "state": "Illinois",
+    "cities": ["Springfield", "Chicago", "Peoria", "Rockford", "Naperville"]
+  },
+  {
+    "country": "US",
+    "state": "Indiana",
+    "cities": ["Indianapolis", "Fort Wayne", "Evansville", "South Bend", "Carmel"]
+  },
+  {
+    "country": "US",
+    "state": "Iowa",
+    "cities": ["Des Moines", "Cedar Rapids", "Davenport", "Sioux City", "Iowa City"]
+  },
+  {
+    "country": "US",
+    "state": "Kansas",
+    "cities": ["Topeka", "Wichita", "Overland Park", "Kansas City", "Olathe"]
+  },
+  {
+    "country": "US",
+    "state": "Kentucky",
+    "cities": ["Frankfort", "Louisville", "Lexington", "Bowling Green", "Owensboro"]
+  },
+  {
+    "country": "US",
+    "state": "Louisiana",
+    "cities": ["Baton Rouge", "New Orleans", "Shreveport", "Lafayette", "Lake Charles"]
+  },
+  {
+    "country": "US",
+    "state": "Maine",
+    "cities": ["Augusta", "Portland", "Lewiston", "Bangor", "Auburn"]
+  },
+  {
+    "country": "US",
+    "state": "Maryland",
+    "cities": ["Annapolis", "Baltimore", "Frederick", "Rockville", "Gaithersburg"]
+  },
+  {
+    "country": "US",
+    "state": "Massachusetts",
+    "cities": ["Boston", "Worcester", "Springfield", "Lowell", "Cambridge"]
+  },
+  {
+    "country": "US",
+    "state": "Michigan",
+    "cities": ["Lansing", "Detroit", "Grand Rapids", "Warren", "Sterling Heights"]
+  },
+  {
+    "country": "US",
+    "state": "Minnesota",
+    "cities": ["St. Paul", "Minneapolis", "Rochester", "Duluth", "Bloomington"]
+  },
+  {
+    "country": "US",
+    "state": "Mississippi",
+    "cities": ["Jackson", "Gulfport", "Hattiesburg", "Biloxi", "Southaven"]
+  },
+  {
+    "country": "US",
+    "state": "Missouri",
+    "cities": ["Jefferson City", "Kansas City", "St. Louis", "Springfield", "Independence"]
+  },
+  {
+    "country": "US",
+    "state": "Montana",
+    "cities": ["Helena", "Billings", "Missoula", "Great Falls", "Bozeman"]
+  },
+  {
+    "country": "US",
+    "state": "Nebraska",
+    "cities": ["Lincoln", "Omaha", "Bellevue", "Grand Island", "Kearney"]
+  },
+  {
+    "country": "US",
+    "state": "Nevada",
+    "cities": ["Carson City", "Las Vegas", "Reno", "Henderson", "Sparks"]
+  },
+  {
+    "country": "US",
+    "state": "New Hampshire",
+    "cities": ["Concord", "Manchester", "Nashua", "Derry", "Rochester"]
+  },
+  {
+    "country": "US",
+    "state": "New Jersey",
+    "cities": ["Trenton", "Newark", "Jersey City", "Paterson", "Elizabeth"]
+  },
+  {
+    "country": "US",
+    "state": "New Mexico",
+    "cities": ["Santa Fe", "Albuquerque", "Las Cruces", "Rio Rancho", "Roswell"]
+  },
+  {
+    "country": "US",
+    "state": "New York",
+    "cities": ["Albany", "New York City", "Buffalo", "Rochester", "Syracuse"]
+  },
+  {
+    "country": "US",
+    "state": "North Carolina",
+    "cities": ["Raleigh", "Charlotte", "Greensboro", "Durham", "Winston-Salem"]
+  },
+  {
+    "country": "US",
+    "state": "North Dakota",
+    "cities": ["Bismarck", "Fargo", "Grand Forks", "Minot", "West Fargo"]
+  },
+  {
+    "country": "US",
+    "state": "Ohio",
+    "cities": ["Columbus", "Cleveland", "Cincinnati", "Toledo", "Akron"]
+  },
+  {
+    "country": "US",
+    "state": "Oklahoma",
+    "cities": ["Oklahoma City", "Tulsa", "Norman", "Broken Arrow", "Lawton"]
+  },
+  {
+    "country": "US",
+    "state": "Oregon",
+    "cities": ["Salem", "Portland", "Eugene", "Gresham", "Hillsboro"]
+  },
+  {
+    "country": "US",
+    "state": "Pennsylvania",
+    "cities": ["Harrisburg", "Philadelphia", "Pittsburgh", "Allentown", "Erie"]
+  },
+  {
+    "country": "US",
+    "state": "Rhode Island",
+    "cities": ["Providence", "Warwick", "Cranston", "Pawtucket", "East Providence"]
+  },
+  {
+    "country": "US",
+    "state": "South Carolina",
+    "cities": ["Columbia", "Charleston", "North Charleston", "Mount Pleasant", "Rock Hill"]
+  },
+  {
+    "country": "US",
+    "state": "South Dakota",
+    "cities": ["Pierre", "Sioux Falls", "Rapid City", "Aberdeen", "Brookings"]
+  },
+  {
+    "country": "US",
+    "state": "Tennessee",
+    "cities": ["Nashville", "Memphis", "Knoxville", "Chattanooga", "Clarksville"]
+  },
+  {
+    "country": "US",
+    "state": "Texas",
+    "cities": ["Austin", "Houston", "Dallas", "San Antonio", "Fort Worth"]
+  },
+  {
+    "country": "US",
+    "state": "Utah",
+    "cities": ["Salt Lake City", "Provo", "West Valley City", "West Jordan", "Orem"]
+  },
+  {
+    "country": "US",
+    "state": "Vermont",
+    "cities": ["Montpelier", "Burlington", "Essex", "South Burlington", "Colchester"]
+  },
+  {
+    "country": "US",
+    "state": "Virginia",
+    "cities": ["Richmond", "Virginia Beach", "Norfolk", "Chesapeake", "Arlington"]
+  },
+  {
+    "country": "US",
+    "state": "Washington",
+    "cities": ["Olympia", "Seattle", "Spokane", "Tacoma", "Vancouver"]
+  },
+  {
+    "country": "US",
+    "state": "West Virginia",
+    "cities": ["Charleston", "Huntington", "Morgantown", "Parkersburg", "Wheeling"]
+  },
+  {
+    "country": "US",
+    "state": "Wisconsin",
+    "cities": ["Madison", "Milwaukee", "Green Bay", "Kenosha", "Racine"]
+  },
+  {
+    "country": "US",
+    "state": "Wyoming",
+    "cities": ["Cheyenne", "Casper", "Laramie", "Gillette", "Rock Springs"]
+  }
+]
