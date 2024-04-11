@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./CSS/style.css">
-  <title>Location</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+  <title>Remove Trip</title>
 </head>
 <body>
   <div class="navbar">
     <div class="logo">
-        <img src="./images/Ventur_app_logo-removebg-preview.png" alt="Ventur Logo">
+        <img src="../images/Ventur_app_logo-removebg-preview.png" alt="Ventur Logo">
     </div>
     <form class="search-form">
         <div class="search">
@@ -22,7 +22,19 @@
       <li><a href="javascript:void(0);" id="logout-button">Logout</a></li>
     </ul>    
   </div>
-  <script src="js/location.js"></script>
-  <script src="js/trip.js"></script>
+
+  <div class="container">
+
+    <h3>Choose a Trip:</h3>
+
+    <div class="select_option">
+      <select class="form-select trip-select" aria-label="Select Trip">
+        <option selected>Select Trip</option>
+      </select>
+    </div>
+    <button type="button" class="rmv-done" onclick="removeTrip()">Remove</button>
+</div>
+  <script src="../js/remove.js"></script>
+  <script src="../js/trip.js"></script>
 </body>
 </html>

@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.token) {
             console.log('Login successful:', data);
             localStorage.setItem('token', data.token);
-            window.location.href = '/home.html'; // Redirect to the homepage
+            window.location.href = 'home.html';  // Redirect to the homepage
         } else {
             console.log('Login successful but no token received:', data);
         }

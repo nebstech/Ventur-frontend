@@ -20,5 +20,18 @@ fetch(url)
 
 function logout() {
   localStorage.removeItem('token');
-  window.location.href = '/index.html'
+  window.location.href = 'index.html'; // Relative path
+
+
 }
+
+function loadTrips() {
+  fetch('http://localhost:3000/trip', { credentials: 'include' }) 
+      .then(response => response.json())
+      .then(trips => {
+          console.log(trips); // Process and display trips on the home page
+      })
+      .catch(error => console.error('Failed to load trips:', error));
+}
+
+document.addEventListener('DOMContentLoaded', loadTrips);
