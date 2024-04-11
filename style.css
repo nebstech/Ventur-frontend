@@ -168,6 +168,31 @@ body {
 }
 
 
+.wrapper .btn-next {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 0; /* Add equal top and bottom padding */
+  margin-top: 15px;
+  text-align: center; /* Center text horizontally */
+  display: inline-block; /* or block, depending on layout */
+  line-height: normal; 
+}
+
+#trip-name {
+  width: 73%; /* or any specific width like 300px, 400px, etc. */
+  max-width: 500px; /* Optional: to prevent it from getting too wide */
+}
+
+
+.form-group-trip-image {
+  display: flex; /* Use flexbox to align children horizontally */
+  align-items: center; /* Align children vertically in the center */
+  gap: 10px; /* Add some space between the label and the input */
+  padding-left: 29px;
+}
+
+
+
 
 /* .container {
   width: 600px;

@@ -18,9 +18,28 @@
         </div>
     </form>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#" onclick="logout()">Logout</a></li>
-    </ul>
-  <source src="/js/trip.js" type="">
+      <li><a href="home.html" id="home-button">Home</a></li>
+      <li><a href="javascript:void(0);" id="logout-button">Logout</a></li>
+    </ul>    
+  </div>
+  <div class="wrapper">
+    <h1>Add Trip</h1>
+    <form id="add-trip-form" enctype="multipart/form-data">
+        <div class="form-group form-group-trip-name">
+            <label for="trip-name">Trip Name:</label>
+            <input type="text" id="trip-name" name="name" placeholder="Name" required>
+        </div>
+        <div class="form-group form-group-trip-comment">
+            <label for="trip-comment">Comment:</label>
+            <textarea id="trip-comment" name="comment" cols="35" rows="7" placeholder="Enter Comment" required></textarea>
+        </div>
+        <div class="form-group form-group-trip-image">
+          <label for="trip-image">Image:</label>
+          <input type="file" id="trip-image" name="image">
+      </div>
+        <button type="button" class="btn-next" onclick="saveTrip()">Next</button>
+    </form>
+</div>
+<script src="js/trip.js"></script>
 </body>
 </html>
