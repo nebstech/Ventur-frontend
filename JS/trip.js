@@ -1,3 +1,45 @@
+function loadCountries() {
+    fetch('http://localhost:3000/locations')
+        .then(response => response.json())
+        .then(data => {
+            const countrySelect = document.querySelector('.country');
+            countrySelect.innerHTML = '<option selected>Select Country</option>';
+            data.forEach(country => {
+                const option = new Option(country, country);
+                countrySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading countries:', error));
+}
+
+function loadStates(country) {
+    fetch(`http://localhost:3000/locations?country=${country}`)
+        .then(response => response.json())
+        .then(states => {
+            const stateSelect = document.querySelector('.state');
+            stateSelect.innerHTML = '<option selected>Select State</option>';
+            states.forEach(state => {
+                const option = new Option(state, state);
+                stateSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading states:', error));
+}
+
+function loadCities(country, state) {
+    fetch(`http://localhost:3000/locations?country=${country}&state=${state}`)
+        .then(response => response.json())
+        .then(cities => {
+            const citySelect = document.querySelector('.city');
+            citySelect.innerHTML = '<option selected>Select City</option>';
+            cities.forEach(city => {
+                const option = new Option(city, city);
+                citySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading cities:', error));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadCountries();
     const countrySelect = document.querySelector('.country');
@@ -73,64 +115,3 @@ function logout() {
     });
 }
 
-function loadCountries() {
-    fetch('http://localhost:3000/locations')
-        .then(response => response.json())
-        .then(data => {
-            const countrySelect = document.querySelector('.country');
-            countrySelect.innerHTML = '<option selected>Select Country</option>';
-            data.forEach(country => {
-                const option = new Option(country, country);
-                countrySelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error loading countries:', error));
-}
-
-function loadStates(country) {
-    fetch(`http://localhost:3000/locations?country=${country}`)
-        .then(response => response.json())
-        .then(states => {
-            const stateSelect = document.querySelector('.state');
-            stateSelect.innerHTML = '<option selected>Select State</option>';
-            states.forEach(state => {
-                const option = new Option(state, state);
-                stateSelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error loading states:', error));
-}
-
-function loadCities(country, state) {
-    fetch(`http://localhost:3000/locations?country=${country}&state=${state}`)
-        .then(response => response.json())
-        .then(cities => {
-            const citySelect = document.querySelector('.city');
-            citySelect.innerHTML = '<option selected>Select City</option>';
-            cities.forEach(city => {
-                const option = new Option(city, city);
-                citySelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error loading cities:', error));
-}
-
-function addTripToUI(trip) {
-    const tripsContainer = document.getElementById('trips-container');
-    const existingTripElement = document.getElementById(`trip-${trip._id}`);
-
-    // Check if the trip already exists in the UI to avoid duplication
-    if (!existingTripElement) {
-        const tripElement = createTripElement(trip); // Function to create an HTML element for the trip
-        tripsContainer.appendChild(tripElement);
-    }
-}
-
-function createTripElement(trip) {
-    // Create and return a new trip element for the UI
-    const tripElement = document.createElement('div');
-    tripElement.id = `trip-${trip._id}`;
-    tripElement.textContent = trip.name; // Example property
-    // Add more trip details to tripElement as needed
-    return tripElement;
-}

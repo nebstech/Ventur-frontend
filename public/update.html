@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../CSS/style.css">
-  <title>Remove Trip</title>
+  <title>Update Trip</title>
 </head>
 <body>
   <div class="navbar">
@@ -32,8 +32,13 @@
         <option selected>Select Trip</option>
       </select>
     </div>
-    <button type="button" class="rmv-done" onclick="removeTrip()">Remove</button>
+    <form id="update-trip-form">
+      <input type="text" id="trip-name" placeholder="Trip Name">
+      <input type="text" id="trip-comment" placeholder="Trip Comment"> <!-- Changed ID -->
+      <button type="submit">Update Trip</button>
+    </form>
+    
 </div>
-  <script src="../js/remove.js"></script>
+  <script src="../js/update.js"></script>
 </body>
 </html>

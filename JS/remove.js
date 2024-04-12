@@ -64,3 +64,19 @@ function removeTrip() {
         console.error('Error removing trip:', error);
     });
 }
+
+function logout() {
+    fetch('http://localhost:3000/user/logout', {
+        method: 'GET',
+        credentials: 'include'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Logout failed');
+        }
+        window.location.href = 'index.html'; // or your logout landing page URL
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
