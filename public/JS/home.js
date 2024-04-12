@@ -84,13 +84,3 @@ function logout() {
   });
 }
 
-// function loadTrips() {
-//   fetch('https://coral-app-hed6u.ondigitalocean.app/trip', { credentials: 'include' }) 
-//       .then(response => response.json())
-//       .then(trips => {
-//           console.log(trips); // Process and display trips on the home page
-//       })
-//       .catch(error => console.error('Failed to load trips:', error));
-// }
-
-// document.addEventListener('DOMContentLoaded', loadTrips);

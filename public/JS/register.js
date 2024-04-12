@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = formData.get('username');  // Ensure this matches the name attribute of your form input
     const password = formData.get('password');  // Same here
 
-          // Proceed with the fetch request...
+          // Proceed with the fetch request..
             fetch('https://coral-app-hed6u.ondigitalocean.app/user/signup', {
                 method: 'POST',
                 headers: {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 console.log('Registration successful:', data);
-                window.location.href = '../public/home.html'; // Redirect on successful registration
+                window.location.href = './public/home.html'; // Redirect on successful registration
             })
             .catch(error => {
                 console.error('Registration error:', error);
