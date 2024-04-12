@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/data'
+const url = 'https://coral-app-hed6u.ondigitalocean.app/api/data'
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('search-form'); // Make sure your form has this ID
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchTrips() {
-  fetch('http://localhost:3000/api/trips')  // Adjust the URL to match your server setup
+  fetch('https://coral-app-hed6u.ondigitalocean.app/api/trips')  // Adjust the URL to match your server setup
       .then(response => response.json())
       .then(trips => displayTrips(trips))
       .catch(error => console.error('Failed to load trips:', error));
@@ -69,7 +69,7 @@ function formatLocation(locationArray) {
 }
 
 function logout() {
-  fetch('http://localhost:3000/user/logout', {
+  fetch('https://coral-app-hed6u.ondigitalocean.app/user/logout', {
       method: 'GET',
       credentials: 'include'
   })
@@ -85,7 +85,7 @@ function logout() {
 }
 
 // function loadTrips() {
-//   fetch('http://localhost:3000/trip', { credentials: 'include' }) 
+//   fetch('https://coral-app-hed6u.ondigitalocean.app/trip', { credentials: 'include' }) 
 //       .then(response => response.json())
 //       .then(trips => {
 //           console.log(trips); // Process and display trips on the home page

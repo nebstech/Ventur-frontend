@@ -22,7 +22,7 @@ function populateTripsSelect() {
         });
     }
 
-    fetch('http://localhost:3000/trip')
+    fetch('https://coral-app-hed6u.ondigitalocean.app/trip')
     .then(response => response.json())
     .then(tripsFromDb => {
         tripsFromDb.forEach(trip => {
@@ -47,7 +47,7 @@ function removeTrip() {
         return;
     }
 
-    fetch(`http://localhost:3000/trip/${tripId}`, {
+    fetch(`https://coral-app-hed6u.ondigitalocean.app/trip/${tripId}`, {
         method: 'DELETE',
     })
     .then(response => {
@@ -66,7 +66,7 @@ function removeTrip() {
 }
 
 function logout() {
-    fetch('http://localhost:3000/user/logout', {
+    fetch('https://coral-app-hed6u.ondigitalocean.app/user/logout', {
         method: 'GET',
         credentials: 'include'
     })

@@ -11,7 +11,7 @@ function populateTripsSelect() {
   const tripsSelect = document.querySelector('.trip-select');
   tripsSelect.innerHTML = '<option value="" disabled selected>Select Trip</option>'; // Make 'Select Trip' not selectable
 
-  fetch('http://localhost:3000/trip')
+  fetch('https://coral-app-hed6u.ondigitalocean.app/trip')
   .then(response => response.json())
   .then(tripsFromDb => {
     tripsFromDb.forEach(trip => {
@@ -30,7 +30,7 @@ function updateTrip() {
   const tripName = document.getElementById('trip-name').value;
   const tripComment = document.getElementById('trip-comment').value; // Ensure you have an input with id="trip-comment"
 
-  fetch(`http://localhost:3000/trip/${tripId}`, {
+  fetch(`https://coral-app-hed6u.ondigitalocean.app/trip/${tripId}`, {
       method: 'PATCH',  // Changed from 'PUT' to 'PATCH' to match your Express setup
       headers: {
           'Content-Type': 'application/json'
@@ -89,7 +89,7 @@ function updateTrip() {
 //     // Assuming you have input fields for updating trip details
 //     const tripName = document.getElementById('trip-name').value; // Example for trip name update
 
-//     fetch(`http://localhost:3000/trip/${tripId}`, {
+//     fetch(`https://coral-app-hed6u.ondigitalocean.app/trip/${tripId}`, {
 //         method: 'PUT',
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ function updateTrip() {
 // function loadTripDetails(tripId) {
 //   if (!tripId) return; // Exit if no trip is selected
 
-//   fetch(`http://localhost:3000/trip/${tripId}`)
+//   fetch(`https://coral-app-hed6u.ondigitalocean.app/trip/${tripId}`)
 //   .then(response => response.json())
 //   .then(trip => {
 //       document.getElementById('trip-name').value = trip.name; // Assuming 'name' is a field you want to update
@@ -140,7 +140,7 @@ function updateTrip() {
 //   }
 
 //   // Fetch trips from the database
-//   fetch('http://localhost:3000/trip')
+//   fetch('https://coral-app-hed6u.ondigitalocean.app/trip')
 //   .then(response => {
 //       if (!response.ok) throw new Error('Failed to fetch trips');
 //       return response.json();

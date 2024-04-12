@@ -1,5 +1,5 @@
 function loadCountries() {
-    fetch('http://localhost:3000/locations')
+    fetch('https://coral-app-hed6u.ondigitalocean.app/locations')
         .then(response => response.json())
         .then(data => {
             const countrySelect = document.querySelector('.country');
@@ -13,7 +13,7 @@ function loadCountries() {
 }
 
 function loadStates(country) {
-    fetch(`http://localhost:3000/locations?country=${country}`)
+    fetch(`https://coral-app-hed6u.ondigitalocean.app/locations?country=${country}`)
         .then(response => response.json())
         .then(states => {
             const stateSelect = document.querySelector('.state');
@@ -27,7 +27,7 @@ function loadStates(country) {
 }
 
 function loadCities(country, state) {
-    fetch(`http://localhost:3000/locations?country=${country}&state=${state}`)
+    fetch(`https://coral-app-hed6u.ondigitalocean.app/locations?country=${country}&state=${state}`)
         .then(response => response.json())
         .then(cities => {
             const citySelect = document.querySelector('.city');
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/trip', {
+            const response = await fetch('https://coral-app-hed6u.ondigitalocean.app/trip', {
                 method: 'POST',
                 body: formData // Don't set content-type header for FormData
             });
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function logout() {
-    fetch('http://localhost:3000/user/logout', {
+    fetch('https://coral-app-hed6u.ondigitalocean.app/user/logout', {
         method: 'GET',
         credentials: 'include'
     })

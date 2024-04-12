@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = formData.get('password');  // Same here
 
           // Proceed with the fetch request...
-            fetch('http://localhost:3000/user/signup', {
+            fetch('https://coral-app-hed6u.ondigitalocean.app/user/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

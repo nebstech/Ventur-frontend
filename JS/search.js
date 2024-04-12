@@ -1,4 +1,4 @@
-const url = `http://localhost:3000/locations/${encodeURIComponent(locationQuery)}/trips`;
+const url = `https://coral-app-hed6u.ondigitalocean.app/locations/${encodeURIComponent(locationQuery)}/trips`;
 
 document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
@@ -25,7 +25,7 @@ const getAllTripsByLocation = async (req, res) => {
 
 async function searchTripsByLocation(locationQuery) {
   try {
-      const url = `http://localhost:3000/locations/${locationQuery}/trips`;  // Adjust the port if your backend is on a different one
+      const url = `https://coral-app-hed6u.ondigitalocean.app/locations/${locationQuery}/trips`;  // Adjust the port if your backend is on a different one
       const response = await fetch(url);
       if (!response.ok) {
           throw new Error('Failed to fetch trips');
