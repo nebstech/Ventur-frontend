@@ -25,20 +25,30 @@
   <div class="wrapper">
     <h1>Add Trip</h1>
     <form id="add-trip-form" enctype="multipart/form-data">
-        <div class="form-group form-group-trip-name">
-            <label for="trip-name">Trip Name:</label>
-            <input type="text" id="trip-name" name="name" placeholder="Name" required>
-        </div>
-        <div class="form-group form-group-trip-comment">
-            <label for="trip-comment">Comment:</label>
-            <textarea id="trip-comment" name="comment" cols="35" rows="7" placeholder="Enter Comment" required></textarea>
-        </div>
-        <div class="form-group form-group-trip-image">
-          <label for="trip-image">Image:</label>
-          <input type="file" id="trip-image" name="image">
+      <div class="form-group form-group-trip-name">
+          <label for="trip-name">Trip Name:</label>
+          <input type="text" id="trip-name" name="name" placeholder="Name" required>
       </div>
-        <button type="button" class="btn-next" onclick="saveTrip()">Next</button>
-    </form>
+      <div class="form-group form-group-trip-comment">
+          <label for="trip-comment">Comment:</label>
+          <textarea id="trip-comment" name="comment" cols="35" rows="8" placeholder="Enter Comment" required></textarea>
+      </div>
+      <div class="select_option">
+          <select name="country" class="form-select country" aria-label="Default select example" onchange="loadStates()">
+              <option value="" selected>Select Country</option>
+              <!-- Country options will be loaded here -->
+          </select>
+          <select name="state" class="form-select state" aria-label="Default select example" onchange="loadCities()">
+              <option value="" selected>Select State</option>
+              <!-- State options will be loaded here -->
+          </select>
+          <select name="city" class="form-select city" aria-label="Default select example">
+              <option value="" selected>Select City</option>
+              <!-- City options will be loaded here -->
+          </select>
+      </div>
+      <button type="submit">Save Trip</button>
+  </form>
 </div>
 <script src="../js/trip.js"></script>
 </body>

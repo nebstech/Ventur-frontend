@@ -1,56 +1,61 @@
-function saveTrip() {
-    const tripName = document.getElementById('trip-name').value;
-    const tripComment = document.getElementById('trip-comment').value;
-    const tripImage = document.getElementById('trip-image').files[0];
-
-    const formData = new FormData();
-    formData.append('name', tripName);
-    formData.append('comment', tripComment);
-    if (tripImage) {
-        formData.append('image', tripImage);
-    }
-
-    fetch('http://localhost:3000/trip', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Trip saved:', data);
-        
-        // Check if the data is an array and has at least one element
-        if (Array.isArray(data) && data.length > 0) {
-            // Assuming the first element is the newly created trip
-            const trip = data[0];
-            localStorage.setItem('currentTripId', trip._id);
-            window.location.href = 'location.html'; // Redirect to the location page
-        } else {
-            throw new Error('No trip data received.');
-        }
-    })
-    .catch(error => console.error('Error saving trip:', error));
-}
-
-
 document.addEventListener('DOMContentLoaded', () => {
+    loadCountries();
+    const countrySelect = document.querySelector('.country');
+    const stateSelect = document.querySelector('.state');
+    const form = document.getElementById('add-trip-form');
     const homeButton = document.getElementById('home-button');
     const logoutButton = document.getElementById('logout-button');
 
+    countrySelect.addEventListener('change', function() {
+        loadStates(this.value);
+    });
+
+    stateSelect.addEventListener('change', function() {
+        const country = countrySelect.value;
+        loadCities(country, this.value);
+    });
+
     if (homeButton) {
         homeButton.addEventListener('click', () => {
-          window.location.href = 'home.html'; // or whatever your home page's path is
-    });
-}
+            // window.location.href = 'home.html'; // or your home page URL
+        });
+    }
 
     if (logoutButton) {
         logoutButton.addEventListener('click', logout);
     }
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+
+        // Log the contents of FormData
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/trip', {
+                method: 'POST',
+                body: formData // Don't set content-type header for FormData
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save trip');
+            }
+            const data = await response.json();
+            if (data && data._id) {
+                localStorage.setItem('currentTripId', data._id);
+                window.location.href = 'home.html'; // or your success page URL
+            } else {
+                throw new Error('Trip ID is missing in the response.');
+            }
+        } catch (error) {
+            console.error('Error saving trip:', error);
+        }
+    });
 });
+
 
 function logout() {
     fetch('http://localhost:3000/user/logout', {
@@ -61,9 +66,71 @@ function logout() {
         if (!response.ok) {
             throw new Error('Logout failed');
         }
-        window.location.href = 'index.html';
+        window.location.href = 'index.html'; // or your logout landing page URL
     })
     .catch(error => {
         console.error('Error:', error);
     });
+}
+
+function loadCountries() {
+    fetch('http://localhost:3000/locations')
+        .then(response => response.json())
+        .then(data => {
+            const countrySelect = document.querySelector('.country');
+            countrySelect.innerHTML = '<option selected>Select Country</option>';
+            data.forEach(country => {
+                const option = new Option(country, country);
+                countrySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading countries:', error));
+}
+
+function loadStates(country) {
+    fetch(`http://localhost:3000/locations?country=${country}`)
+        .then(response => response.json())
+        .then(states => {
+            const stateSelect = document.querySelector('.state');
+            stateSelect.innerHTML = '<option selected>Select State</option>';
+            states.forEach(state => {
+                const option = new Option(state, state);
+                stateSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading states:', error));
+}
+
+function loadCities(country, state) {
+    fetch(`http://localhost:3000/locations?country=${country}&state=${state}`)
+        .then(response => response.json())
+        .then(cities => {
+            const citySelect = document.querySelector('.city');
+            citySelect.innerHTML = '<option selected>Select City</option>';
+            cities.forEach(city => {
+                const option = new Option(city, city);
+                citySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error loading cities:', error));
+}
+
+function addTripToUI(trip) {
+    const tripsContainer = document.getElementById('trips-container');
+    const existingTripElement = document.getElementById(`trip-${trip._id}`);
+
+    // Check if the trip already exists in the UI to avoid duplication
+    if (!existingTripElement) {
+        const tripElement = createTripElement(trip); // Function to create an HTML element for the trip
+        tripsContainer.appendChild(tripElement);
+    }
+}
+
+function createTripElement(trip) {
+    // Create and return a new trip element for the UI
+    const tripElement = document.createElement('div');
+    tripElement.id = `trip-${trip._id}`;
+    tripElement.textContent = trip.name; // Example property
+    // Add more trip details to tripElement as needed
+    return tripElement;
 }
