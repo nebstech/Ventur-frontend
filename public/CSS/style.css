@@ -1,6 +1,3 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #fff;
+  background: #fafafa;
 }
 
 .wrapper {
@@ -178,19 +175,6 @@ body {
   line-height: normal; 
 }
 
-#trip-name {
-  width: 73%; /* or any specific width like 300px, 400px, etc. */
-  max-width: 500px; /* Optional: to prevent it from getting too wide */
-}
-
-
-.form-group-trip-image {
-  display: flex; /* Use flexbox to align children horizontally */
-  align-items: center; /* Align children vertically in the center */
-  gap: 10px; /* Add some space between the label and the input */
-  padding-left: 29px;
-}
-
 .container{
   width: 600px;
   padding: 25px;
@@ -256,9 +240,22 @@ body {
 
 .rmv-done {
   width: 100%;
-  height: 30px;
-  margin-top: 5px;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: #fff;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.rmv-done:hover {
+  background: linear-gradient(to right, #2575fc, #6a11cb);
+}
+
+.rmv-done:active {
+  transform: scale(0.98); 
 }
 
 .select_option_2 select{
@@ -277,24 +274,31 @@ body {
   max-width: 1200px; /* Ensures the container doesn't get too wide on larger screens */
   margin: auto; /* Center the wrapper horizontally */
   padding: 20px;
-  background: #f4f4f4; /* Example background color, adjust as needed */
-  border-radius: 8px; /* Optional: for rounded corners */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds subtle shadow */
+  background: #ebebeb; /* Subtle background color */
+  border-radius: 16px; /* Rounded corners for a softer look */
+  box-shadow: 8px 8px 24px rgba(0,0,0,0.1); /* Enhanced shadow for a floating effect */
+  font-family: 'Poppins', sans-serif; /* Modern and clean font */
 }
-
 
 .content-wrapper h1 {
   text-align: center;
-  color: #333; /* Adjust the color to fit your theme */
-  margin-bottom: 50px; /* Space between the title and the trip list */
+  color: #333; /* Dark gray for contrast */
+  margin-bottom: 40px; /* Space between the title and the content */
+  font-weight: 600; /* Bolder font for the title */
 }
 
 .trip-list {
-  padding: 15px;
-  background: white; /* Makes it stand out from the wrapper background */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Optional: adds subtle shadow */
+  padding: 20px;
+  background: #ffffff; /* Clean white background for each item */
+  border: none; /* Removing the border for a cleaner look */
+  border-radius: 10px; /* Consistently rounded corners */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05); /* Softer shadow for a subtle lift */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.trip-list:hover {
+  transform: translateY(-5px); /* Slight lift when hovered */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* Increased shadow on hover for emphasis */
 }
 
 .trip-entry {
@@ -305,4 +309,119 @@ body {
 
 .trip-entry:last-child {
   border-bottom: none;
+}
+
+#update-trip-form {
+  width: 100%; /* Makes the form take full width of its container */
+  max-width: 600px; /* Limits the form width for larger screens */
+  margin: 20px auto; /* Centers the form and adds vertical spacing */
+  padding: 20px; /* Padding inside the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#update-trip-form input[type="text"] {
+  width: 100%; /* Full width inputs */
+  padding: 10px; /* Padding inside inputs */
+  margin-bottom: 5px; /* Space between each input */
+  border-radius: 4px; /* Rounded corners for the input */
+  font-size: 16px; /* Readable font size */
+}
+
+#trip-name {
+  max-width: 100%; /* Limits width to 70% */
+}
+
+/* Specific styles for the 'Trip Comment' input */
+#trip-comment {
+  max-width: 100%; /* Allows full width */
+  height: 60px;
+}
+
+#update-trip-form button[type="submit"] {
+  width: 100%; /* Full width button */
+  padding: 12px 20px; /* Comfortable padding */
+  font-size: 18px; /* Larger font size for better readability */
+  color: #fff; /* White text color */
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+  border: none; /* No border */
+  border-radius: 6px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#update-trip-form button[type="submit"]:hover {
+  background: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse gradient on hover */
+}
+
+#update-trip-form button[type="submit"]:active {
+  transform: scale(0.98); /* Slight scale down on click */
+}
+
+#add-trip-form {
+  width: 100%; /* Full width of its container */
+  max-width: 600px; /* Consistent width as the Update form */
+  margin: 20px auto; /* Center the form with vertical spacing */
+  padding: 20px; /* Padding inside the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle depth with a shadow */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between each form group */
+}
+
+.form-group label {
+  display: block; /* Labels are block to ensure they are above inputs */
+  margin-bottom: 5px; /* Space between label and input/textarea/select */
+  font-size: 16px; /* Matching font size */
+}
+
+#add-trip-form input[type="text"] {
+  height: 25px;
+  width: 100%; /* Full width inputs and textareas */
+  padding: 10px; /* Padding inside inputs and textareas */
+  border: 2px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 16px; /* Consistent font size */
+}
+
+#add-trip-form textarea {
+  width: 100%;
+  height: auto; /* Height auto to adjust based on content */
+  padding: 10px; /* Padding inside inputs and textareas */
+  border: 2px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 16px;
+}
+
+#add-trip-form .form-select {
+  width: 100%;
+  padding: 10px;
+  margin: 4px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+#add-trip-form button[type="submit"] {
+  width: 100%; /* Full width button */
+  padding: 12px 20px; /* Comfortable padding */
+  font-size: 18px; /* Larger font size for better readability */
+  color: #fff; /* White text color */
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+  border: none; /* No border */
+  border-radius: 6px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#add-trip-form button[type="submit"]:hover {
+  background: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse gradient on hover */
+}
+
+#add-trip-form button[type="submit"]:active {
+  transform: scale(0.98); /* Slight scale down on click */
 }
