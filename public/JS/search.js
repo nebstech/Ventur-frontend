@@ -1,12 +1,20 @@
-const url = `https://coral-app-hed6u.ondigitalocean.app/locations/${encodeURIComponent(locationQuery)}/trips`;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const locationQuery = params.get('location'); // Ensure this is within scope for subsequent use.
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    const locationQuery = document.getElementById('location-search').value;
     if (locationQuery) {
         searchTripsByLocation(locationQuery);
     }
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const params = new URLSearchParams(window.location.search);
+//     const locationQuery = params.get('location'); // Ensure this is within scope for subsequent use.
+//     if (locationQuery) {
+//         searchTripsByLocation(locationQuery);
+//     }
+// });
+
 
 async function searchTripsByLocation(locationQuery) { // Ensure locationQuery is passed as a parameter
     try {
