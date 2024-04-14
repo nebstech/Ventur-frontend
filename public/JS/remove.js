@@ -7,6 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
     populateTripsSelect();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Ensure this is only added once unless intended to be added multiple times
+    setupRemoveTripHandler();
+});
+
+function setupRemoveTripHandler() {
+    const deleteButton = document.getElementById('delete-button-id'); // example button ID
+    if (deleteButton) {
+        deleteButton.removeEventListener('click', removeTrip); // Remove existing event to avoid duplicates
+        deleteButton.addEventListener('click', removeTrip); // Add event listener
+    }
+}
+
 function populateTripsSelect() {
     const tripsSelect = document.querySelector('.trip-select');
     tripsSelect.innerHTML = ''; // Clear existing options
