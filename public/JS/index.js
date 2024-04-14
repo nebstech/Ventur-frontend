@@ -1,4 +1,4 @@
-const url = 'https://coral-app-hed6u.ondigitalocean.appapi/data/';
+const url = 'https://coral-app-hed6u.ondigitalocean.app/api/data/';
 
 // // Use the fetch function to get data from the URL
 fetch(url)
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const username = formData.get('username');
       const password = formData.get('password');
 
-      fetch('https://coral-app-hed6u.ondigitalocean.appuser/login', {
+      fetch('https://coral-app-hed6u.ondigitalocean.app/user/login', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

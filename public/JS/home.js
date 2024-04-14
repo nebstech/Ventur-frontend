@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function fetchTrips() {
-  fetch('https://coral-app-hed6u.ondigitalocean.appapi/trips')
+  fetch('https://coral-app-hed6u.ondigitalocean.app/api/trips')
       .then(response => response.json())
       .then(trips => displayTrips(trips))
       .catch(error => {
@@ -52,7 +52,7 @@ function setupSearchForm() {
 }
 
 function logout() {
-  fetch('https://coral-app-hed6u.ondigitalocean.appuser/logout', {
+  fetch('https://coral-app-hed6u.ondigitalocean.app/user/logout', {
       method: 'GET',
       credentials: 'include'
   })
