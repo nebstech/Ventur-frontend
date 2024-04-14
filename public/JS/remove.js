@@ -53,7 +53,7 @@ function getTripId() {
 }
 
 function removeTrip() {
-    const tripId = localStorage.getItem('selectedTripId'); // Assuming you store the trip ID upon selection
+    const tripId = localStorage.getItem('selectedTripId');
 
     if (!tripId) {
         console.error('No trip ID found');
@@ -61,13 +61,15 @@ function removeTrip() {
         return;
     }
 
-    // Perform the DELETE request
     fetch(`https://coral-app-hed6u.ondigitalocean.app/trip/${tripId}`, {
         method: 'DELETE'
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to remove trip');
+            // This throws will catch more detailed info if the server responded with specifics
+            return response.json().then(data => {
+                throw new Error(data.error || 'Failed to remove trip');
+            });
         }
         return response.json();
     })
@@ -78,7 +80,7 @@ function removeTrip() {
     })
     .catch(error => {
         console.error('Error removing trip:', error);
-        alert('Failed to remove the trip. Please try again.');
+        alert('Failed to remove the trip. Please try again: ' + error.message);
     });
 }
 
