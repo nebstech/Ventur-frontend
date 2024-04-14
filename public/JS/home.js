@@ -1,52 +1,22 @@
-const url = 'https://coral-app-hed6u.ondigitalocean.app/api/data'
-
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('search-form'); // Make sure your form has this ID
-  const input = document.getElementById('location-search');
-
-  form.addEventListener('submit', (event) => {
-      event.preventDefault();  // Prevent the form from submitting traditionally
-      const locationQuery = input.value.trim();
-      if (locationQuery) {
-          // Redirect to the search results page with the query parameter
-          window.location.href = `search.html?location=${encodeURIComponent(locationQuery)}`;
-      }
-  });
-});
-
-async function searchTripsByLocation(locationQuery) {
-  try {
-      const url = `http://localhost:3001/locations/${locationQuery}/trips`;  // Adjust the port if your backend is on a different one
-      const response = await fetch(url);
-      if (!response.ok) {
-          throw new Error('Failed to fetch trips');
-      }
-      const trips = await response.json();
-      displayTrips(trips);
-  } catch (error) {
-      console.error('Error fetching trips:', error);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
   fetchTrips();
+  setupSearchForm();
 });
 
 function fetchTrips() {
-  fetch('https://coral-app-hed6u.ondigitalocean.app/api/trips')  // Adjust the URL to match your server setup
+  fetch('https://coral-app-hed6u.ondigitalocean.app/api/trips')
       .then(response => response.json())
       .then(trips => displayTrips(trips))
-      .catch(error => console.error('Failed to load trips:', error));
+      .catch(error => {
+          console.error('Failed to load trips:', error);
+          const tripsList = document.getElementById('trip-list');
+          tripsList.innerHTML = '<p>Error loading trips.</p>';
+      });
 }
 
 function displayTrips(trips) {
   const tripsList = document.getElementById('trip-list');
   tripsList.innerHTML = ''; // Clear previous content
-
-  if (!Array.isArray(trips)) {
-      console.error('Expected an array of trips, received:', trips);
-      return; // Exit the function if trips is not an array
-  }
 
   trips.forEach(trip => {
       const tripEntry = document.createElement('div');
@@ -54,18 +24,31 @@ function displayTrips(trips) {
       tripEntry.innerHTML = `
           <h3>${trip.name}</h3>
           <p><strong>Location:</strong> ${formatLocation(trip.location)}</p>
-          <p><strong>Comment:</strong> ${trip.comments}</p>  
+          <p><strong>Comment:</strong> ${trip.comments || 'No comments'}</p>
       `;
-
       tripsList.appendChild(tripEntry);
   });
 }
 
-
-
-
 function formatLocation(locationArray) {
   return locationArray.map(loc => `${loc.city}, ${loc.state}, ${loc.country}`).join(' | ');
+}
+
+function setupSearchForm() {
+  const form = document.getElementById('search-form');
+  const input = document.getElementById('location-search');
+
+  if (form && input) {
+      form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const locationQuery = input.value.trim();
+          if (locationQuery) {
+              window.location.href = `search.html?location=${encodeURIComponent(locationQuery)}`;
+          }
+      });
+  } else {
+      console.error("Search form or input not found in the DOM");
+  }
 }
 
 function logout() {
@@ -77,10 +60,9 @@ function logout() {
       if (!response.ok) {
           throw new Error('Logout failed');
       }
-      window.location.href = 'index.html'; // or your logout landing page URL
+      window.location.href = 'index.html';
   })
   .catch(error => {
       console.error('Error:', error);
   });
 }
-

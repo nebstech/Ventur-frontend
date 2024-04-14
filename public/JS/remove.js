@@ -9,46 +9,61 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function populateTripsSelect() {
     const tripsSelect = document.querySelector('.trip-select');
-    tripsSelect.innerHTML = '<option selected>Select Trip</option>';
+    tripsSelect.innerHTML = ''; // Clear existing options
 
-    const localTrips = JSON.parse(localStorage.getItem('trips'));
+    const defaultOption = document.createElement('option');
+    defaultOption.textContent = 'Select Trip';
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+    tripsSelect.appendChild(defaultOption);
+
+    // Load trips from localStorage
+    const localTrips = JSON.parse(localStorage.getItem('localTrips'));
     if (localTrips) {
         localTrips.forEach(trip => {
-            console.log('Local trip name:', trip.name);
             const option = document.createElement('option');
-            option.value = trip.id;
+            option.value = trip.id; // Assuming 'id' is the correct identifier
             option.textContent = trip.name;
             tripsSelect.appendChild(option);
         });
     }
 
-    fetch('https://coral-app-hed6u.ondigitalocean.app/trip')
+    // Fetch trips from the API
+    fetch('https://coral-app-hed6u.ondigitalocean.app/api/trips')
     .then(response => response.json())
     .then(tripsFromDb => {
         tripsFromDb.forEach(trip => {
-            console.log('DB trip:', trip);
             const option = document.createElement('option');
-            option.value = trip._id;
+            option.value = trip._id; // Assuming '_id' is the identifier from the API
             option.textContent = trip.name || trip.title || 'Unnamed Trip';
             tripsSelect.appendChild(option);
         });
     })
     .catch(error => console.error('Failed to load trips from the database:', error));
+
+    // Handle selection changes
+    tripsSelect.addEventListener('change', function() {
+        localStorage.setItem('selectedTripId', this.value);
+    });
 }
+
 
 function getTripId() {
     return localStorage.getItem('currentTripId');
 }
 
 function removeTrip() {
-    const tripId = getTripId();
+    const tripId = localStorage.getItem('selectedTripId'); // Assuming you store the trip ID upon selection
+
     if (!tripId) {
         console.error('No trip ID found');
+        alert('Please select a trip to remove.');
         return;
     }
 
-    fetch(`https://coral-app-hed6u.ondigitalocean.app/trip/${tripId}`, {
-        method: 'DELETE',
+    // Perform the DELETE request
+    fetch(`http://localhost:3001/trip/${tripId}`, {
+        method: 'DELETE'
     })
     .then(response => {
         if (!response.ok) {
@@ -58,12 +73,16 @@ function removeTrip() {
     })
     .then(data => {
         console.log('Trip removed:', data);
-        window.location.href = 'home.html'; // Redirect to the home page after successful deletion
+        alert('Trip successfully removed.');
+        window.location.reload(); // Optionally reload the page or redirect
     })
     .catch(error => {
         console.error('Error removing trip:', error);
+        alert('Failed to remove the trip. Please try again.');
     });
 }
+
+
 
 function logout() {
     fetch('https://coral-app-hed6u.ondigitalocean.app/user/logout', {

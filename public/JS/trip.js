@@ -1,5 +1,5 @@
 function loadCountries() {
-    fetch('https://coral-app-hed6u.ondigitalocean.app/locations')
+    fetch('http://localhost:3001/locations') // Use HTTP when working locally unless you have HTTPS set up
         .then(response => response.json())
         .then(data => {
             const countrySelect = document.querySelector('.country');
@@ -13,12 +13,12 @@ function loadCountries() {
 }
 
 function loadStates(country) {
-    fetch(`https://coral-app-hed6u.ondigitalocean.app/locations?country=${country}`)
+    fetch(`http://localhost:3001/locations?country=${encodeURIComponent(country)}`)
         .then(response => response.json())
-        .then(states => {
+        .then(data => {
             const stateSelect = document.querySelector('.state');
             stateSelect.innerHTML = '<option selected>Select State</option>';
-            states.forEach(state => {
+            data.forEach(state => {
                 const option = new Option(state, state);
                 stateSelect.appendChild(option);
             });
@@ -27,12 +27,12 @@ function loadStates(country) {
 }
 
 function loadCities(country, state) {
-    fetch(`https://coral-app-hed6u.ondigitalocean.app/locations?country=${country}&state=${state}`)
+    fetch(`http://localhost:3001/locations?country=${encodeURIComponent(country)}&state=${encodeURIComponent(state)}`)
         .then(response => response.json())
-        .then(cities => {
+        .then(data => {
             const citySelect = document.querySelector('.city');
             citySelect.innerHTML = '<option selected>Select City</option>';
-            cities.forEach(city => {
+            data.forEach(city => {
                 const option = new Option(city, city);
                 citySelect.appendChild(option);
             });
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (homeButton) {
         homeButton.addEventListener('click', () => {
-            // window.location.href = 'home.html'; // or your home page URL
+            window.location.href = 'home.html'; // or your home page URL
         });
     }
 
@@ -70,16 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const formData = new FormData(form);
-
-        // Log the contents of FormData
         for (let [key, value] of formData.entries()) {
             console.log(`${key}: ${value}`);
         }
 
         try {
-            const response = await fetch('https://coral-app-hed6u.ondigitalocean.app/trip', {
+            const response = await fetch('http://localhost:3001/trip', {
                 method: 'POST',
-                body: formData // Don't set content-type header for FormData
+                body: formData
             });
 
             if (!response.ok) {
@@ -98,9 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 function logout() {
-    fetch('https://coral-app-hed6u.ondigitalocean.app/user/logout', {
+    fetch('http://localhost:3001/user/logout', {
         method: 'GET',
         credentials: 'include'
     })
@@ -114,4 +111,3 @@ function logout() {
         console.error('Error:', error);
     });
 }
-

@@ -1,57 +1,67 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('location'); // Assuming 'location' is the query parameter
+    const searchInput = document.getElementById('location-search');
+    const tripsContainer = document.getElementById('trips-container');
 
-document.getElementById('search-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-    const locationQuery = document.getElementById('location-search').value;
-    if (locationQuery) {
-        searchTripsByLocation(locationQuery);
+    if (!searchInput || !tripsContainer) {
+        console.error('One or more elements are missing in the DOM');
+        return;
+    }
+
+    if (searchQuery) {
+        searchInput.value = searchQuery; // Set the search input to the current query
+        fetchSearchResults(searchQuery, tripsContainer);
+    }
+
+    const searchForm = document.getElementById('search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetchSearchResults(searchInput.value, tripsContainer);
+        });
+    } else {
+        console.error('Search form is missing in the DOM');
     }
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const params = new URLSearchParams(window.location.search);
-//     const locationQuery = params.get('location'); // Ensure this is within scope for subsequent use.
-//     if (locationQuery) {
-//         searchTripsByLocation(locationQuery);
-//     }
-// });
-
-
-async function searchTripsByLocation(locationQuery) { // Ensure locationQuery is passed as a parameter
-    try {
-        const url = `https://coral-app-hed6u.ondigitalocean.app/locations/${encodeURIComponent(locationQuery)}/trips`;
-        const response = await fetch(url);
+function fetchSearchResults(query, tripsContainer) {
+    fetch(`https://coral-app-hed6u.ondigitalocean.app/api/trips/search/${encodeURIComponent(query)}`)
+    .then(response => {
         if (!response.ok) {
-            throw new Error('Failed to fetch trips');
+            throw new Error(`Failed to fetch trips: ${response.status} ${response.statusText}`);
         }
-        const trips = await response.json();
-        displayTrips(trips);
-    } catch (error) {
-        console.error('Error fetching trips:', error);
-    }
+        return response.json();
+    })
+    .then(trips => displayTrips(trips, tripsContainer))
+    .catch(error => {
+        console.error('Error fetching search results:', error);
+        tripsContainer.innerHTML = '<p>Error fetching search results.</p>';
+    });
 }
 
-function displayTrips(trips) {
-    const tripsContainer = document.getElementById('trips-container');
-    tripsContainer.innerHTML = ''; // Clear previous results
+function displayTrips(trips, tripsContainer) {
+    tripsContainer.innerHTML = ''; // Clear any previous content
 
     if (trips.length > 0) {
         trips.forEach(trip => {
             const contentWrapper = document.createElement('div');
-            contentWrapper.className = 'content-wrapper';  // Use class for styling, if multiple elements share this style
+            contentWrapper.className = 'content-wrapper';
 
             const tripName = document.createElement('h1');
             tripName.textContent = trip.name;
 
             const tripLocation = document.createElement('p');
-            tripLocation.textContent = `Location: ${trip.location.map(loc => loc.city).join(', ')}`;
+            tripLocation.textContent = trip.location && trip.location.length > 0
+                ? `Location: ${trip.location.map(loc => `${loc.city}, ${loc.state}`).join('; ')}`
+                : 'Location details not available';
 
             const tripComment = document.createElement('p');
-            tripComment.textContent = `Comment: ${trip.comment || 'No comment provided'}`;
+            tripComment.textContent = `Comment: ${trip.comments || 'No comment provided'}`;
 
             contentWrapper.appendChild(tripName);
             contentWrapper.appendChild(tripLocation);
             contentWrapper.appendChild(tripComment);
-
             tripsContainer.appendChild(contentWrapper);
         });
     } else {
