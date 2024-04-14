@@ -62,7 +62,7 @@ function removeTrip() {
     }
 
     // Perform the DELETE request
-    fetch(`http://localhost:3001/trip/${tripId}`, {
+    fetch(`https://coral-app-hed6u.ondigitalocean.app//trip/${tripId}`, {
         method: 'DELETE'
     })
     .then(response => {

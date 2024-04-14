@@ -1,5 +1,5 @@
 function loadCountries() {
-    fetch('http://localhost:3001/locations') // Use HTTP when working locally unless you have HTTPS set up
+    fetch('https://coral-app-hed6u.ondigitalocean.app//locations') // Use HTTP when working locally unless you have HTTPS set up
         .then(response => response.json())
         .then(data => {
             const countrySelect = document.querySelector('.country');
@@ -13,7 +13,7 @@ function loadCountries() {
 }
 
 function loadStates(country) {
-    fetch(`http://localhost:3001/locations?country=${encodeURIComponent(country)}`)
+    fetch(`https://coral-app-hed6u.ondigitalocean.app//locations?country=${encodeURIComponent(country)}`)
         .then(response => response.json())
         .then(data => {
             const stateSelect = document.querySelector('.state');
@@ -27,7 +27,7 @@ function loadStates(country) {
 }
 
 function loadCities(country, state) {
-    fetch(`http://localhost:3001/locations?country=${encodeURIComponent(country)}&state=${encodeURIComponent(state)}`)
+    fetch(`https://coral-app-hed6u.ondigitalocean.app//locations?country=${encodeURIComponent(country)}&state=${encodeURIComponent(state)}`)
         .then(response => response.json())
         .then(data => {
             const citySelect = document.querySelector('.city');
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/trip', {
+            const response = await fetch('https://coral-app-hed6u.ondigitalocean.app//trip', {
                 method: 'POST',
                 body: formData
             });
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function logout() {
-    fetch('http://localhost:3001/user/logout', {
+    fetch('https://coral-app-hed6u.ondigitalocean.app//user/logout', {
         method: 'GET',
         credentials: 'include'
     })
