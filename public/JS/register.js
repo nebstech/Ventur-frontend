@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 console.log('Registration successful:', data);
-                window.location.href = './public/home.html'; // Redirect on successful registration
+                window.location.href = 'home.html'; // Redirect on successful registration
             })
             .catch(error => {
                 console.error('Registration error:', error);
